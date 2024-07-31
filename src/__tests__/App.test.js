@@ -110,3 +110,11 @@ test("form contains a 'Submit Order' button", () => {
     screen.getByRole("button", { name: /submit order/i })
   ).toBeInTheDocument();
 });
+
+test("clicking the Place Order button displays a thank you message", () => {
+  render(<App />);
+
+  userEvent.click(screen.getByRole("button", { name: /submit order/i }));
+
+  expect(screen.getByText(/thanks for your order!/i)).toBeInTheDocument();
+});
